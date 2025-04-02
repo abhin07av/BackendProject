@@ -15,12 +15,13 @@ cloudinary.config({
             }
 
             const response = await cloudinary.uploader.upload(localFilePath, {
-                resource_type: auto
+                resource_type: "auto"
             })
 
             //file uploaded Successfully
 
-            console.log("File Uploaded Successfully", response.url);
+            //console.log("File Uploaded Successfully", response.url);
+            fs.unlinkSync(localFilePath);
             return response;
         } catch (error) {
             fs.unlinkSync(localFilePath) //removes the locally saved temporary files as the upload operation got failed
