@@ -9,10 +9,11 @@ app.use(cors({
     origin: process.env.COURSE_ORIGIN,
     credentials:true,
 
-}))
+})) // used to allow cross origin resouce sharing (server running at localhost:4000 and frontend running at 3000,
+//  to send requests from different origins)
 
-app.use(express.json({limit:"16kb"}));
-app.use(express.urlencoded({extended: true, limit: "16kb"}))
+app.use(express.json({limit:"16kb"})); //used for post method
+app.use(express.urlencoded({extended: true, limit: "16kb"})) // converts input from frontend to usable object (re.body)
 
 app.use(express.static("public"))
 app.use(cookieParser());
